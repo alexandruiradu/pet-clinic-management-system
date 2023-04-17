@@ -1,6 +1,6 @@
 [PCMS-1] Setup Hibernate - DONE
 [PCMS-2] Setup DATABASE utility class - DONE
-[PCMS-3] Create Hibernate model
+[PCMS-3] Create Hibernate model - DONE
 [PCMS-4] Create infrastructure for user menu
 [PCMS-5] Create abstract and generic repository
 [PCMS-6] As a user, I should be able to add a new veterinarian into the system;
