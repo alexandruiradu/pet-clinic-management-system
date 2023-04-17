@@ -11,9 +11,8 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pet_id")
     private Integer petId;
-    @Enumerated(EnumType.STRING)
     @Column(name = "race")
-    private Race race;
+    private String race;
     @Column(name = "birthdate")
     private Date birthdate;
     @Column(name = "is_vaccinated")
@@ -26,7 +25,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(Race race, Date birthdate, Boolean isVaccinated, String ownerName) {
+    public Pet(String race, Date birthdate, Boolean isVaccinated, String ownerName) {
         this.race = race;
         this.birthdate = birthdate;
         this.isVaccinated = isVaccinated;
@@ -41,11 +40,11 @@ public class Pet {
         this.petId = petId;
     }
 
-    public Race getRace() {
+    public String getRace() {
         return race;
     }
 
-    public void setRace(Race race) {
+    public void setRace(String race) {
         this.race = race;
     }
 

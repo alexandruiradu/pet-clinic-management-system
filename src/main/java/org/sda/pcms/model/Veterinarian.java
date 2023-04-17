@@ -16,16 +16,15 @@ public class Veterinarian {
     private String lastName;
     @Column(name = "address")
     private String address;
-    @Enumerated(EnumType.STRING)
     @Column(name = "speciality")
-    private Speciality speciality;
+    private String speciality;
     @OneToMany(mappedBy = "veterinarian")
     private List<Consult> consults;
 
     public Veterinarian() {
     }
 
-    public Veterinarian(String firstName, String lastName, String address, Speciality speciality) {
+    public Veterinarian(String firstName, String lastName, String address, String speciality) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -64,11 +63,11 @@ public class Veterinarian {
         this.address = address;
     }
 
-    public Speciality getSpeciality() {
+    public String getSpeciality() {
         return speciality;
     }
 
-    public void setSpeciality(Speciality speciality) {
+    public void setSpeciality(String speciality) {
         this.speciality = speciality;
     }
 

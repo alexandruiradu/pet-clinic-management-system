@@ -1,14 +1,24 @@
 package org.sda.pcms;
 
 import org.sda.pcms.controller.UserOption;
+import org.sda.pcms.controller.VeterinarianController;
+import org.sda.pcms.repository.VeterinarianRepositoryImpl;
+import org.sda.pcms.service.VeterinarianServiceImpl;
+import org.sda.pcms.utils.SessionManager;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         startHibernate();
-        // dependencies
+        // dependenciesw
         Scanner scanner = new Scanner(System.in);
+        VeterinarianController veterinarianController = new VeterinarianController(
+                scanner,
+                new VeterinarianServiceImpl(
+                        new VeterinarianRepositoryImpl()
+                )
+        );
 
 
         UserOption userOption = UserOption.UNKNOWN;
@@ -25,7 +35,7 @@ public class Main {
 
             switch (userOption) {
                 case CREATE_VETERINARIAN:
-                    System.out.println("Not implemented");
+                    veterinarianController.create();
                     break;
                 case VIEW_VETERINARIAN_LIST:
                     System.out.println("Not implemented");
@@ -67,14 +77,15 @@ public class Main {
         }
     }
 
-    private static void startHibernate(){
-        for (int index = 0; index < 50; index++){
+    private static void startHibernate() {
+        for (int index = 0; index < 50; index++) {
             System.out.println();
         }
     }
 
-    private static void stopHibernate(){
-        for (int index = 0; index < 50; index++){
+    private static void stopHibernate() {
+        SessionManager.shutDown();
+        for (int index = 0; index < 50; index++) {
             System.out.println();
         }
     }
