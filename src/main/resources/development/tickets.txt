@@ -27,6 +27,7 @@
     - veterinarian id; given data should be positive numeric value and greater than 0
     If the provided veterinarian id is not found in the system, the user will be prompted with a message.
     For any validation issues, the user will be prompted with a message.
+                - DONE
 
 [PCMS-9] As a user, I should be able to update an existing veterinarian from the system;
     I should be able to specify:

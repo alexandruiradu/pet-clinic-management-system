@@ -44,7 +44,7 @@ public class Main {
                     System.out.println("Not implemented");
                     break;
                 case DELETE_VETERINARIAN:
-                    System.out.println("Not implemented");
+                    veterinarianController.delete();
                     break;
                 case CREATE_PET:
                     System.out.println("Not implemented");

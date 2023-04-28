@@ -3,8 +3,10 @@ package org.sda.pcms.service;
 import org.sda.pcms.model.Veterinarian;
 import org.sda.pcms.repository.VeterinarianRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class VeterinarianServiceImpl implements VeterinarianService {
     private static final String ONLY_LETTERS_VALIDATION_REGEX = "^[a-zA-Z]+$";
@@ -70,7 +72,21 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Override
     public void delete(int id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException(
+                    "Provided veterinarian id is 0 or negative. Please provide a valid value!"
+            );
+        }
 
+        Optional<Veterinarian> optionalVeterinarian = veterinarianRepository.findById(id);
+        if (optionalVeterinarian.isEmpty()) {
+            throw new EntityNotFoundException(
+                    "Provided veterinarian id does not exist in the system. Please provide a valid value!"
+            );
+        }
+
+        Veterinarian veterinarian = optionalVeterinarian.get();
+        veterinarianRepository.delete(veterinarian);
     }
 
     @Override

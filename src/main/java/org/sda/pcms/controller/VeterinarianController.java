@@ -1,9 +1,11 @@
 package org.sda.pcms.controller;
 
 import org.sda.pcms.repository.exception.EntityCreationFailedException;
+import org.sda.pcms.repository.exception.EntityDeletionFailedException;
 import org.sda.pcms.repository.exception.EntityFetchingFailedException;
 import org.sda.pcms.service.VeterinarianService;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Scanner;
 
 public class VeterinarianController {
@@ -42,9 +44,31 @@ public class VeterinarianController {
         try {
             veterinarianService.findAll().stream()
                     .forEach(System.out::println);
-        } catch (EntityFetchingFailedException e){
+        } catch (EntityFetchingFailedException e) {
             System.err.println(e.getMessage());
-        } catch (Exception e ){
+        } catch (Exception e) {
+            System.err.println("Internal server error. Please contact your administrator!");
+        }
+    }
+
+    public void delete() {
+        try {
+            System.out.println("Please insert id:");
+            Integer vetId = Integer.parseInt(scanner.nextLine().trim());
+
+            veterinarianService.delete(vetId);
+            System.out.println("Veterinarian deleted successfully!");
+        } catch (NumberFormatException e) {
+            System.err.println("Provided id is not a digit. Please provide a valid value!");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityFetchingFailedException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityDeletionFailedException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
             System.err.println("Internal server error. Please contact your administrator!");
         }
     }
