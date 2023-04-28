@@ -3,6 +3,7 @@ package org.sda.pcms.controller;
 import org.sda.pcms.repository.exception.EntityCreationFailedException;
 import org.sda.pcms.repository.exception.EntityDeletionFailedException;
 import org.sda.pcms.repository.exception.EntityFetchingFailedException;
+import org.sda.pcms.repository.exception.EntityUpdateFailedException;
 import org.sda.pcms.service.VeterinarianService;
 
 import javax.persistence.EntityNotFoundException;
@@ -67,6 +68,32 @@ public class VeterinarianController {
         } catch (EntityFetchingFailedException e) {
             System.err.println(e.getMessage());
         } catch (EntityDeletionFailedException e) {
+            System.err.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Internal server error. Please contact your administrator!");
+        }
+    }
+
+    public void update() {
+        try {
+            System.out.println("Please insert id:");
+            Integer vetId = Integer.parseInt(scanner.nextLine().trim());
+            System.out.println("Please insert address:");
+            String address = scanner.nextLine().trim();
+            System.out.println("Please insert speciality");
+            String speciality = scanner.nextLine().trim();
+
+            veterinarianService.update(vetId, address, speciality);
+            System.out.println("Veterinarian updated successfully!");
+        } catch (NumberFormatException e) {
+            System.err.println("Provided id is not a digit. Please provide a valid value!");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityFetchingFailedException e) {
+            System.err.println(e.getMessage());
+        } catch (EntityUpdateFailedException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {
             System.err.println("Internal server error. Please contact your administrator!");

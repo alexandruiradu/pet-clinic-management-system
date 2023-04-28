@@ -41,7 +41,7 @@ public class Main {
                     veterinarianController.viewAll();
                     break;
                 case UPDATE_VETERINARIAN:
-                    System.out.println("Not implemented");
+                    veterinarianController.update();
                     break;
                 case DELETE_VETERINARIAN:
                     veterinarianController.delete();
