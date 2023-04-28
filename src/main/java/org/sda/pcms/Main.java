@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         startHibernate();
-        // dependenciesw
+        // dependencies
         Scanner scanner = new Scanner(System.in);
         VeterinarianController veterinarianController = new VeterinarianController(
                 scanner,
@@ -38,7 +38,7 @@ public class Main {
                     veterinarianController.create();
                     break;
                 case VIEW_VETERINARIAN_LIST:
-                    System.out.println("Not implemented");
+                    veterinarianController.viewAll();
                     break;
                 case UPDATE_VETERINARIAN:
                     System.out.println("Not implemented");

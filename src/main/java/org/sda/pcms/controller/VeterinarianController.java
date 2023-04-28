@@ -1,6 +1,7 @@
 package org.sda.pcms.controller;
 
 import org.sda.pcms.repository.exception.EntityCreationFailedException;
+import org.sda.pcms.repository.exception.EntityFetchingFailedException;
 import org.sda.pcms.service.VeterinarianService;
 
 import java.util.Scanner;
@@ -33,6 +34,17 @@ public class VeterinarianController {
         } catch (EntityCreationFailedException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {
+            System.err.println("Internal server error. Please contact your administrator!");
+        }
+    }
+
+    public void viewAll() {
+        try {
+            veterinarianService.findAll().stream()
+                    .forEach(System.out::println);
+        } catch (EntityFetchingFailedException e){
+            System.err.println(e.getMessage());
+        } catch (Exception e ){
             System.err.println("Internal server error. Please contact your administrator!");
         }
     }

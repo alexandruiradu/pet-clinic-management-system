@@ -20,6 +20,7 @@
         - veterinarian address
         - veterinarian speciality
     If no veterinarian is found in the system, the user will be prompted with a message.
+                - DONE
 
 [PCMS-8] As a user, I should be able to delete an existing veterinarian from the system;
     I should be able to specify:

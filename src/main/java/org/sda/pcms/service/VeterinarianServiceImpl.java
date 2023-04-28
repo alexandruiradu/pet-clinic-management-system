@@ -3,6 +3,7 @@ package org.sda.pcms.service;
 import org.sda.pcms.model.Veterinarian;
 import org.sda.pcms.repository.VeterinarianRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VeterinarianServiceImpl implements VeterinarianService {
@@ -74,6 +75,6 @@ public class VeterinarianServiceImpl implements VeterinarianService {
 
     @Override
     public List<Veterinarian> findAll() {
-        return null;
+        return veterinarianRepository.findAll();
     }
 }
