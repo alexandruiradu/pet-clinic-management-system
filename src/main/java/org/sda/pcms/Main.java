@@ -1,8 +1,11 @@
 package org.sda.pcms;
 
+import org.sda.pcms.controller.PetController;
 import org.sda.pcms.controller.UserOption;
 import org.sda.pcms.controller.VeterinarianController;
+import org.sda.pcms.repository.PetRepositoryImpl;
 import org.sda.pcms.repository.VeterinarianRepositoryImpl;
+import org.sda.pcms.service.PetServiceImpl;
 import org.sda.pcms.service.VeterinarianServiceImpl;
 import org.sda.pcms.utils.SessionManager;
 
@@ -17,6 +20,12 @@ public class Main {
                 scanner,
                 new VeterinarianServiceImpl(
                         new VeterinarianRepositoryImpl()
+                )
+        );
+        PetController petController = new PetController(
+                scanner,
+                new PetServiceImpl(
+                        new PetRepositoryImpl()
                 )
         );
 
@@ -47,7 +56,7 @@ public class Main {
                     veterinarianController.delete();
                     break;
                 case CREATE_PET:
-                    System.out.println("Not implemented");
+                    petController.create();
                     break;
                 case VIEW_PET_LIST:
                     System.out.println("Not implemented");

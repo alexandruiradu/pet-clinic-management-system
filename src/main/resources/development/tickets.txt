@@ -45,6 +45,7 @@
     - pet vaccine status; given data should be TRUE or FALSE
     - pet owner name; given data should not be empty or blank or contain digits
     For any validation issues, the user will be prompted with a message.
+                - DONE
 
 [PCMS-11] As a user, I should be able to view the whole list with pets from the system;
     Each line will contain:
